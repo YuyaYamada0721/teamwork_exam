@@ -1,0 +1,27 @@
+<h1><%= @user.name %>のページ</h1>
+<p>メールアドレス: <%= @user.email %></p>
+
+<br>
+
+<p style="font-size:20px; border-bottom:3px solid black; width:200px;">お気に入り記事一覧</p>
+  <table>
+    <th>
+      <td>タイトル</td>
+    </th>
+  <% @favorites.each do |favorite| %>
+    <tr>
+      <td>・<%= favorite.blog.title %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <p style="font-size:20px; border-bottom:3px solid black; width:300px;">お気に入りされたBlogの数</p>
+  <% if @favorited_total_counts.zero? %>
+    <p>お気に入りされていません</p>
+  <% else %>
+    <p><%= @favorited_total_counts %>件お気に入りされています</p>
+  <% end %>
+
+<br>
+
+<%= link_to 'ブログ一覧へ', blogs_path %>
